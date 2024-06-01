@@ -25,22 +25,21 @@ async function getExclusions (excluder: string, authKey: string): Promise<any> {
 	
 	const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
 	const parsedResponse = await queryResponse.json();
-   return parsedResponse;
+return parsedResponse;
 }
 
 async function deleteExclusion (exclusionId: string, authKey: string): Promise<any> {
-   const myHeaders = new Headers();
-	myHeaders.append("Authorization", authKey);
-	myHeaders.append("Content-Type", "application/json");
-	
-	const graphql = JSON.stringify({
-		query: "mutation RemoveAlertExclusion($exclusionId: String!) {  \
-			removeAlertExclusion(exclusionId: $exclusionId) {    \
-					  id  \
-			}\
-		}",
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authKey);
+  myHeaders.append("Content-Type", "application/json");
+  const graphql = JSON.stringify({
+    query: "mutation RemoveAlertExclusion($exclusionId: String!) {  \
+		  removeAlertExclusion(exclusionId: $exclusionId) {    \
+		    id  \
+		  } \
+    }",
 	  variables: {"exclusionId":exclusionId}
-	})
+  })
 	const requestOptions = {
 	  method: "POST",
 	  headers: myHeaders,
@@ -50,7 +49,7 @@ async function deleteExclusion (exclusionId: string, authKey: string): Promise<a
 	
 	const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
 	const parsedResponse = await queryResponse.json();
-	return parsedResponse;
+return parsedResponse;
 }
 
 const env = await load();
