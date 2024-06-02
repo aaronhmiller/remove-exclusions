@@ -25,11 +25,11 @@ async function getExclusions(
       },
     },
   });
-  const requestOptions = {
+  const requestOptions: RequestInit = {
     method: "POST",
     headers: myHeaders,
     body: graphql,
-    redirect: "follow",
+    redirect: "follow" as RequestRedirect,
   };
 
   const queryResponse = await fetch(
