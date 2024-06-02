@@ -87,7 +87,7 @@ interface Exclusion {
 const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
-let exclusionsArray: Exclusion[] = new Array(Exclusion);
+let exclusionsArray: Exclusion[] = [];
 const parsedResponse: GetExclusionsResponse = await getExclusions(
   excluder,
   authKey,
