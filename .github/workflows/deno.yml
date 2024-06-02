@@ -23,17 +23,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Create test file
-        run: |
-          cp remove.ts remove_test.ts
-
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Commit and push changes
+      - name: Pull, copy, commit, and push changes
         run: |
+          git pull
+          cp remote.ts remove_test.ts
           git add remove_test.ts
           git commit -m "Updating test file"
           git push
