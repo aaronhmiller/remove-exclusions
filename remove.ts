@@ -37,7 +37,7 @@ async function getExclusions(
     requestOptions,
   );
   const parsedResponse = await queryResponse.json();
-  return parsedResponse;
+  return parsedResponse as Exclusion[];
 }
 
 async function deleteExclusion(
@@ -78,7 +78,7 @@ interface GetExclusionsResponse {
   };
 }
 interface Exclusion {
-  _id: string;
+  exclusionId: string;
   fileName: string;
   realMatch: string;
   aggId: string;
