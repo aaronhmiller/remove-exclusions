@@ -1,13 +1,13 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
 async function getExclusions (
-  excluder: string, 
+  excluder: string,
   authKey: string,
 ): Promise<undefined> {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
-  
+
   const graphql = JSON.stringify({
     query: "query GetExclusions($getExclusionsInput: GetExclusionsInput) { \
       getExclusions(getExclusionsInput: $getExclusionsInput) { \
@@ -19,11 +19,11 @@ async function getExclusions (
    }",
     variables: {
       "getExclusionsInput": {
-       "filters": { "modifiedBy":[excluder]},
-         "offset":0,
-         "limit":50,
-     },
-   },
+        "filters": { "modifiedBy":[excluder]},
+        "offset":0,
+        "limit":50,
+      },
+    },
   });
   const requestOptions = {
    method: "POST",
