@@ -1,6 +1,6 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
-async function getExclusions (
+async function getExclusions(
   excluder: string,
   authKey: string,
 ): Promise<undefined> {
@@ -26,10 +26,10 @@ async function getExclusions (
     },
   });
   const requestOptions = {
-   method: "POST",
-   headers: myHeaders,
-   body: graphql,
-   redirect: "follow",
+    method: "POST",
+    headers: myHeaders,
+    body: graphql,
+    redirect: "follow",
   };
   
   const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
