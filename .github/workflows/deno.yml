@@ -20,6 +20,7 @@ jobs:
         with:
           sparse-checkout: |
             remove.ts
+            remove_test.ts
           sparse-checkout-cone-mode: false
 
       - name: Create test file
@@ -29,7 +30,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git add remove_test.ts
-          git commit -m "Added fresh test file"
+          git commit -m "Updating test file"
           git push
 
       - name: Setup Deno
