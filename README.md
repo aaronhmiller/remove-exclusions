@@ -1,3 +1,4 @@
+[![OX Security Scan](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/ox.yml/badge.svg)](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/ox.yml)
 [![Deno](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/deno.yml/badge.svg)](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/deno.yml)
 
 # remove-exclusions
