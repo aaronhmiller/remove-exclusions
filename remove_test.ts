@@ -1,6 +1,6 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
-async function getExclusions (excluder: string, authKey: string): Promise<any> {
+async function getExclusions (excluder: string, authKey: string): Promise<undefined> {
 	const myHeaders = new Headers();
 	myHeaders.append("Authorization", authKey);
 	myHeaders.append("Content-Type", "application/json");
@@ -28,7 +28,7 @@ async function getExclusions (excluder: string, authKey: string): Promise<any> {
 return parsedResponse;
 }
 
-async function deleteExclusion (exclusionId: string, authKey: string): Promise<any> {
+async function deleteExclusion (exclusionId: string, authKey: string): Promise<undefined> {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
@@ -58,7 +58,7 @@ const excluder = "test@ox.security";
 const parsedResponse = await getExclusions(excluder, authKey);
 const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 
-const parsedStringArray = new Array();
+const parsedStringArray = [];
 for (let i = 0; i < exclusionsArray.length; i++) {
    const exclusionResult = await deleteExclusion(exclusionsArray[i].exclusionId, authKey);
    const resultString = await JSON.stringify(exclusionResult);
