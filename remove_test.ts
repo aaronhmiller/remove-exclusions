@@ -19,9 +19,9 @@ async function getExclusions(
    }",
     variables: {
       "getExclusionsInput": {
-        "filters": { "modifiedBy":[excluder]},
-        "offset":0,
-        "limit":50,
+          "filters": { "modifiedBy":[excluder]},
+          "offset":0,
+          "limit":50,
       },
     },
   });
@@ -32,7 +32,10 @@ async function getExclusions(
     redirect: "follow",
   };
   
-  const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
+  const queryResponse = await fetch(
+    "https://api.cloud.ox.security/api/apollo-gateway", 
+    requestOptions,
+  );
   const parsedResponse = await queryResponse.json();
 return parsedResponse;
 }
@@ -53,7 +56,7 @@ async function deleteExclusion (exclusionId: string, authKey: string): Promise<u
     method: "POST",
     headers: myHeaders,
     body: graphql,
-    redirect: "follow"
+    redirect: "follow",
   };
   
   const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
