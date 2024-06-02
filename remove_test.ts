@@ -75,8 +75,10 @@ const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
 const parsedResponse = await getExclusions(excluder, authKey);
 // Ensure parsedResponse and its nested properties are defined
-if (parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions) {
-	const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
+if (
+  parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions
+) {
+  const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 } else {
   console.error("parsedResponse or its properties are undefined");
 }
