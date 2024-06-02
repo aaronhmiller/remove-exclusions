@@ -55,11 +55,11 @@ async function deleteExclusion(
     }",
     variables: { "exclusionId": exclusionId },
   });
-  const requestOptions = {
+  const requestOptions: RequestInit = {
     method: "POST",
     headers: myHeaders,
     body: graphql,
-    redirect: "follow",
+    redirect: "follow" as RequestRedirect,
   };
 
   const queryResponse = await fetch(
@@ -74,7 +74,12 @@ const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
 const parsedResponse = await getExclusions(excluder, authKey);
-const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
+// Ensure parsedResponse and its nested properties are defined
+if (parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions) {
+	const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
+} else {
+  console.error('Parsed response or its properties are undefined');
+}
 
 const parsedStringArray = [];
 for (let i = 0; i < exclusionsArray.length; i++) {
