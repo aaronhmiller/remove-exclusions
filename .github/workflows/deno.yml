@@ -17,6 +17,20 @@ jobs:
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            remove.ts
+          sparse-checkout-cone-mode: false
+
+      - name: Create test file
+        run: |
+          cp remove.ts remove_test.ts
+
+      - name: Commit and push changes
+        run: |
+          git add remove_test.ts
+          git commit -m "Added fresh test file"
+          git push
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1.1.4
