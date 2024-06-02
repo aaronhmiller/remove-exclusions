@@ -78,17 +78,20 @@ interface GetExclusionsResponse {
   };
 }
 interface Exclusion {
-	_id: string;
-	fileName: string;
-	realMatch: string;
-	aggId: string;
+  _id: string;
+  fileName: string;
+  realMatch: string;
+  aggId: string;
 }
 
 const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
 let exclusionsArray = [];
-const parsedResponse: GetExclusionsResponse = await getExclusions(excluder, authKey);
+const parsedResponse: GetExclusionsResponse = await getExclusions(
+  excluder,
+  authKey,
+);
 // Ensure parsedResponse and its nested properties are defined
 if (
   parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions
