@@ -27,6 +27,11 @@ jobs:
         run: |
           cp remove.ts remove_test.ts
 
+      - name: Configure Git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Commit and push changes
         run: |
           git add remove_test.ts
