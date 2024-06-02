@@ -73,7 +73,7 @@ async function deleteExclusion(
 const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
-const exclusionsArray = []
+const exclusionsArray = [];
 const parsedResponse = await getExclusions(excluder, authKey);
 // Ensure parsedResponse and its nested properties are defined
 if (
