@@ -3,7 +3,7 @@ import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 async function getExclusions(
   excluder: string,
   authKey: string,
-): Promise<undefined> {
+): Promise<Exclusion[]> {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
@@ -87,7 +87,7 @@ interface Exclusion {
 const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
-let exclusionsArray = [];
+let exclusionsArray = Exclusion[];
 const parsedResponse: GetExclusionsResponse = await getExclusions(
   excluder,
   authKey,
