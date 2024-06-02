@@ -19,13 +19,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            remove.ts
-            remove_test.ts
+            remove-exclusions/remove.ts
+            remove-exclusions/remove_test.ts
           sparse-checkout-cone-mode: false
 
       - name: Create test file
         run: |
-          cp remove.ts remove_test.ts
+          cp remove-exclusions/remove.ts remove-exclusions/remove_test.ts
 
       - name: Configure Git
         run: |
@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add remove_test.ts
+          git add remove-exclusions/remove_test.ts
           git commit -m "Updating test file"
           git push
 
