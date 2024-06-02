@@ -19,9 +19,9 @@ async function getExclusions(
    }",
     variables: {
       "getExclusionsInput": {
-          "filters": { "modifiedBy":[excluder]},
-          "offset":0,
-          "limit":50,
+        "filters": { "modifiedBy": [excluder] },
+        "offset": 0,
+        "limit": 50,
       },
     },
   });
@@ -31,16 +31,19 @@ async function getExclusions(
     body: graphql,
     redirect: "follow",
   };
-  
+
   const queryResponse = await fetch(
-    "https://api.cloud.ox.security/api/apollo-gateway", 
+    "https://api.cloud.ox.security/api/apollo-gateway",
     requestOptions,
   );
   const parsedResponse = await queryResponse.json();
-return parsedResponse;
+  return parsedResponse;
 }
 
-async function deleteExclusion (exclusionId: string, authKey: string): Promise<undefined> {
+async function deleteExclusion(
+  exclusionId: string,
+  authKey: string,
+): Promise<undefined> {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
@@ -50,18 +53,21 @@ async function deleteExclusion (exclusionId: string, authKey: string): Promise<u
         id  \
       } \
     }",
-    variables: {"exclusionId":exclusionId}
-  })
+    variables: { "exclusionId": exclusionId },
+  });
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: graphql,
     redirect: "follow",
   };
-  
-  const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
+
+  const queryResponse = await fetch(
+    "https://api.cloud.ox.security/api/apollo-gateway",
+    requestOptions,
+  );
   const parsedResponse = await queryResponse.json();
-return parsedResponse;
+  return parsedResponse;
 }
 
 const env = await load();
@@ -72,8 +78,11 @@ const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 
 const parsedStringArray = [];
 for (let i = 0; i < exclusionsArray.length; i++) {
-   const exclusionResult = await deleteExclusion(exclusionsArray[i].exclusionId, authKey);
-   const resultString = await JSON.stringify(exclusionResult);
-   parsedStringArray.push(await JSON.parse(resultString)); //.parse undoes overescaping caused by .stringify
+  const exclusionResult = await deleteExclusion(
+    exclusionsArray[i].exclusionId,
+    authKey,
+  );
+  const resultString = await JSON.stringify(exclusionResult);
+  parsedStringArray.push(await JSON.parse(resultString)); //.parse undoes overescaping caused by .stringify
 }
 console.log(parsedStringArray);
