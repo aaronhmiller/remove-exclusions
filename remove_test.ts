@@ -7,31 +7,31 @@ async function getExclusions (
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
-	
+  
   const graphql = JSON.stringify({
     query: "query GetExclusions($getExclusionsInput: GetExclusionsInput) { \
       getExclusions(getExclusionsInput: $getExclusionsInput) { \
-		  exclusions { \
-		    exclusionId \
-		  } \
-		  totalFilteredExclusions \
-		} \
-	 }",
+      exclusions { \
+        exclusionId \
+      } \
+      totalFilteredExclusions \
+    } \
+   }",
     variables: {
       "getExclusionsInput": {
-	     "filters": { "modifiedBy":[excluder]},
-	       "offset":0,
-	       "limit":50,
-	   },
-	 },
+       "filters": { "modifiedBy":[excluder]},
+         "offset":0,
+         "limit":50,
+     },
+   },
   });
   const requestOptions = {
-	 method: "POST",
-	 headers: myHeaders,
-	 body: graphql,
-	 redirect: "follow",
+   method: "POST",
+   headers: myHeaders,
+   body: graphql,
+   redirect: "follow",
   };
-	
+  
   const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
   const parsedResponse = await queryResponse.json();
 return parsedResponse;
@@ -43,21 +43,21 @@ async function deleteExclusion (exclusionId: string, authKey: string): Promise<u
   myHeaders.append("Content-Type", "application/json");
   const graphql = JSON.stringify({
     query: "mutation RemoveAlertExclusion($exclusionId: String!) {  \
-		  removeAlertExclusion(exclusionId: $exclusionId) {    \
-		    id  \
-		  } \
+      removeAlertExclusion(exclusionId: $exclusionId) {    \
+        id  \
+      } \
     }",
-	  variables: {"exclusionId":exclusionId}
+    variables: {"exclusionId":exclusionId}
   })
-	const requestOptions = {
-	  method: "POST",
-	  headers: myHeaders,
-	  body: graphql,
-	  redirect: "follow"
-	};
-	
-	const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
-	const parsedResponse = await queryResponse.json();
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: graphql,
+    redirect: "follow"
+  };
+  
+  const queryResponse = await fetch("https://api.cloud.ox.security/api/apollo-gateway", requestOptions);
+  const parsedResponse = await queryResponse.json();
 return parsedResponse;
 }
 
