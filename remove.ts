@@ -3,7 +3,7 @@ import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 async function getExclusions(
   excluder: string,
   authKey: string,
-): Promise<Exclusion[]> {
+): Promise<GetExclusionsResponse> {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authKey);
   myHeaders.append("Content-Type", "application/json");
@@ -37,7 +37,7 @@ async function getExclusions(
     requestOptions,
   );
   const parsedResponse = await queryResponse.json();
-  return parsedResponse as Exclusion[];
+  return parsedResponse as GetExclusionsResponse;
 }
 
 async function deleteExclusion(
@@ -88,7 +88,7 @@ const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
 let exclusionsArray: Exclusion[] = [];
-const parsedResponse: Exclusion[] = await getExclusions(
+const parsedResponse: GetExclusionsResponse = await getExclusions(
   excluder,
   authKey,
 );
