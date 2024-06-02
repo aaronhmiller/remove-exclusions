@@ -73,12 +73,13 @@ async function deleteExclusion(
 const env = await load();
 const authKey = env["OX_API_KEY"];
 const excluder = "test@ox.security";
+const exclusionsArray = []
 const parsedResponse = await getExclusions(excluder, authKey);
 // Ensure parsedResponse and its nested properties are defined
 if (
   parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions
 ) {
-  const _exclusionsArray = parsedResponse.data.getExclusions.exclusions;
+  exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 } else {
   console.error("parsedResponse or its properties are undefined");
 }
@@ -86,7 +87,7 @@ if (
 const parsedStringArray = [];
 for (let i = 0; i < _exclusionsArray.length; i++) {
   const exclusionResult = await deleteExclusion(
-    _exclusionsArray[i].exclusionId,
+    exclusionsArray[i].exclusionId,
     authKey,
   );
   const resultString = await JSON.stringify(exclusionResult);
