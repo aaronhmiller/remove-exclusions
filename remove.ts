@@ -78,15 +78,15 @@ const parsedResponse = await getExclusions(excluder, authKey);
 if (
   parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions
 ) {
-  const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
+  const _exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 } else {
   console.error("parsedResponse or its properties are undefined");
 }
 
 const parsedStringArray = [];
-for (let i = 0; i < exclusionsArray.length; i++) {
+for (let i = 0; i < _exclusionsArray.length; i++) {
   const exclusionResult = await deleteExclusion(
-    exclusionsArray[i].exclusionId,
+    _exclusionsArray[i].exclusionId,
     authKey,
   );
   const resultString = await JSON.stringify(exclusionResult);
