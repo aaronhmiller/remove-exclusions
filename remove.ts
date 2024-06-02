@@ -78,7 +78,7 @@ const parsedResponse = await getExclusions(excluder, authKey);
 if (parsedResponse && parsedResponse.data && parsedResponse.data.getExclusions) {
 	const exclusionsArray = parsedResponse.data.getExclusions.exclusions;
 } else {
-  console.error('Parsed response or its properties are undefined');
+  console.error("parsedResponse or its properties are undefined");
 }
 
 const parsedStringArray = [];
