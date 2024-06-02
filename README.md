@@ -1,3 +1,4 @@
+[![Deno](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/deno.yml/badge.svg)](https://github.com/aaronhmiller/remove-exclusions/actions/workflows/deno.yml)
 # remove-exclusions
 Remove all exclusions created by the given excluder. BE CAREFUL. Use at your own risk.
 
