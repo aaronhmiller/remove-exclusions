@@ -1,6 +1,6 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
-// pull in first 50 matches for a given "excluder"
+// pull in first 50 matches for a given excluder
 async function getExclusions(
   excluder: string,
   authKey: string,
@@ -41,6 +41,7 @@ async function getExclusions(
   return parsedResponse as GetExclusionsResponse;
 }
 
+// Do the actual deletion here
 async function deleteExclusion(
   exclusionId: string,
   authKey: string,
