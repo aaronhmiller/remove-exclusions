@@ -85,7 +85,7 @@ if (
 }
 
 const parsedStringArray = [];
-for (let i = 0; i < _exclusionsArray.length; i++) {
+for (let i = 0; i < exclusionsArray.length; i++) {
   const exclusionResult = await deleteExclusion(
     exclusionsArray[i].exclusionId,
     authKey,
