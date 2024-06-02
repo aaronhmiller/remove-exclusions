@@ -1,5 +1,6 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
+// May-June 2024
 // pull in first 50 matches for a given excluder
 async function getExclusions(
   excluder: string,
