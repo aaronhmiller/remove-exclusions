@@ -31,7 +31,7 @@ jobs:
       - name: Pull, copy, commit, and push changes
         run: |
           git pull
-          cp remote.ts remove_test.ts
+          cp remove.ts remove_test.ts
           git add remove_test.ts
           git commit -m "Updating test file"
           git push
