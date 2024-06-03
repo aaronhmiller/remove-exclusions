@@ -89,11 +89,12 @@ const env = await load();
 const authKey = env["OX_API_KEY"];
 
 const excluder = prompt("Please enter the user id:");
-console.log("Deleting exclusions created by:", excluder);
+const fixedExcluder: string = excluder !== null ? excluder : ''; //nulls are ugh!
+console.log("Deleting exclusions created by:", fixedExcluder);
 
 let exclusionsArray: Exclusion[] = [];
 const parsedResponse: GetExclusionsResponse = await getExclusions(
-  excluder,
+  fixedExcluder,
   authKey,
 );
 // Ensure parsedResponse and its nested properties are defined
