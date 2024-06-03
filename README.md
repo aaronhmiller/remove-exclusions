@@ -12,12 +12,12 @@ risk.
 
 ## Usage
 
-1. in `remove.ts` replace the `excluder` parameter w/ the email of the
+1. in the .env file (create it if you don't have one), add your
+   `OX_API_KEY=<value_here>`
+2. run `deno run -A remove.ts` (the `-A` allows all permissions)
+3. at the prompt, enter the `excluder` parameter which is the email of the
    `Excluded By` value from OX for which you wish to remove ALL the Exclusions
    associated with that id.
-2. in the .env file (create it if you don't have one), add your
-   `OX_API_KEY=<value_here>`
-3. run `deno run -A remove.ts` (the `-A` allows all permissions)
 
 ## Expected output
 
