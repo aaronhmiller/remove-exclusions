@@ -18,6 +18,10 @@ risk.
 3. at the prompt, enter the `excluder` parameter which is the email of the
    `Excluded By` value from OX for which you wish to remove ALL the Exclusions
    associated with that id.
+   
+The result will look something like this:<br>
+<img width="400" alt="image" src="https://github.com/aaronhmiller/remove-exclusions/assets/223486/3a40d166-6a18-46a6-8dc9-2158987e1cbe">
+
 
 ## Expected output
 
