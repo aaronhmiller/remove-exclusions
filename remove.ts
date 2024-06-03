@@ -1,5 +1,6 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
 
+//testing
 async function getExclusions(
   excluder: string,
   authKey: string,
