@@ -28,9 +28,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Pull, copy, commit, and push changes
+      - name: Copy, commit & push changes (if needed)
         run: |
-          git pull
           cp remove.ts remove_test.ts
           if [ -n "$(git status --porcelain)" ]; then
             git add remove_test.ts
