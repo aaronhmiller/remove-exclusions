@@ -31,8 +31,8 @@ jobs:
       - name: Pull, copy, commit, and push changes
         run: |
           git pull
+          cp remove.ts remove_test.ts
           if [ -n "$(git status --porcelain)" ]; then
-            cp remove.ts remove_test.ts
             git add remove_test.ts
             git commit -m "Updating test file"
             git push
