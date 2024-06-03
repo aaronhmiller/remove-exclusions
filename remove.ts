@@ -88,8 +88,8 @@ interface Exclusion {
 const env = await load();
 const authKey = env["OX_API_KEY"];
 
-const excluder = prompt("Please enter the user/service id: ");
-console.log("Deleting exclusions created by: ", excluder);
+const excluder = prompt("Please enter the user id:");
+console.log("Deleting exclusions created by:", excluder);
 
 let exclusionsArray: Exclusion[] = [];
 const parsedResponse: GetExclusionsResponse = await getExclusions(
