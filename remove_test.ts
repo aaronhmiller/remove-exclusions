@@ -88,13 +88,19 @@ interface Exclusion {
 const env = await load();
 const authKey = env["OX_API_KEY"];
 
-const excluder = prompt("Please enter the user id:");
-const fixedExcluder: string = excluder !== null ? excluder : ""; //nulls are ugh!
-console.log("Deleting exclusions created by:", fixedExcluder);
+let excluder = "";
+if (Deno.args[0] !== null) {
+  excluder = Deno.args[0];
+} else {
+  const initExcluder = prompt("Please enter the user id:");
+  excluder = initExcluder !== null ? excluder : ""; //nulls are ugh!
+}
+
+console.log("Deleting exclusions created by:", excluder);
 
 let exclusionsArray: Exclusion[] = [];
 const parsedResponse: GetExclusionsResponse = await getExclusions(
-  fixedExcluder,
+  excluder,
   authKey,
 );
 // Ensure parsedResponse and its nested properties are defined
