@@ -89,11 +89,11 @@ const env = await load();
 const authKey = env["OX_API_KEY"];
 
 let excluder = "";
-if (Deno.args[0] !== null) {
+if (Deno.args.length !== 0) {
   excluder = Deno.args[0];
 } else {
   const initExcluder = prompt("Please enter the user id:");
-  excluder = initExcluder !== null ? excluder : ""; //nulls are ugh!
+  excluder = initExcluder !== null ? initExcluder : ""; //nulls are ugh!
 }
 
 console.log("Deleting exclusions created by:", excluder);
