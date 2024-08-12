@@ -71,14 +71,15 @@ async function deleteExclusion(
   return parsedResponse;
 }
 
-interface GetExclusionsResponse {
+type GetExclusionsResponse = {
   data: {
     getExclusions: {
       exclusions: Exclusion[];
     };
   };
 }
-interface Exclusion {
+
+type Exclusion = {
   exclusionId: string;
   fileName: string;
   realMatch: string;
