@@ -77,14 +77,14 @@ type GetExclusionsResponse = {
       exclusions: Exclusion[];
     };
   };
-}
+};
 
 type Exclusion = {
   exclusionId: string;
   fileName: string;
   realMatch: string;
   aggId: string;
-}
+};
 
 const env = await load();
 const authKey = env["OX_API_KEY"];
